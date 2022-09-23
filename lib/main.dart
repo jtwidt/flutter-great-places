@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 // Custom data providers (state)
 import './providers/great_places.dart';
+import './screens/place_detail_screen.dart';
 // Screens
 import './screens/places_list_screen.dart';
 
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
         home: PlacesListScreen(),
         routes: {
           AddPlaceScreen.routeName: (ctx) => AddPlaceScreen(),
+          PlaceDetailScreen.routeName: (ctx) => PlaceDetailScreen(),
         },
       ),
     );

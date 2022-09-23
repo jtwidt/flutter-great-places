@@ -7,6 +7,7 @@ import 'package:flutter/foundation.dart';
 // Helpers
 import '../helpers/db_helper.dart';
 import '../helpers/location_helper.dart';
+
 // Custom classes
 import '../models/place.dart';
 
@@ -15,6 +16,10 @@ class GreatPlaces with ChangeNotifier {
 
   List<Place> get items {
     return [..._items];
+  }
+
+  Place findById(String id) {
+    return _items.firstWhere((place) => place.id == id);
   }
 
   Future<void> addPlace(String pickedTitle, File pickedImage,
@@ -51,7 +56,8 @@ class GreatPlaces with ChangeNotifier {
     }
     _items = dataList
         .map(
-          (item) => Place(
+          (item) =>
+          Place(
             id: item['id'],
             title: item['title'],
             image: File(item['image']),
@@ -61,7 +67,7 @@ class GreatPlaces with ChangeNotifier {
               address: item['loc_address'],
             ),
           ),
-        )
+    )
         .toList();
     notifyListeners();
   }
